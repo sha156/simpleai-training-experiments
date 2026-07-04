@@ -4,9 +4,6 @@
 *.pyc
 __pycache__/
 
-# Excluded files
-crawled_data/REPORT_MATERIAL.md
-
 # OS files
 .DS_Store
 Thumbs.db
