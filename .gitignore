@@ -1,5 +1,6 @@
 # Python files (not needed for results display)
 *.py
+!skill/**/*.py
 *.pyc
 __pycache__/
 

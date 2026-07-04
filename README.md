@@ -18,6 +18,11 @@
 
 ```
 ├── README.md                          ← 本文件
+├── skill/                             ← Claude Code Skill：真实实验流水线工具集
+│   ├── README.md                      #   使用说明与注意事项
+│   ├── SKILL.md                       #   Skill 定义（触发条件、标准流程）
+│   ├── references/                    #   连接故障对策 + 实验设计配方
+│   └── scripts/                       #   srv.py (SSH助手) + terminal_screenshot.py (截图工具)
 ├── crawled_data/                      ← 平台抓取数据（课程结构、成绩、实验详情等）
 │   ├── 01_all_experiments.json        # 全部实验列表
 │   ├── 01_course_structure.json       # 课程结构
@@ -117,9 +122,22 @@ TensorFlow 2.21 真实训练，含训练曲线、混淆矩阵、特征图等。
 | 可视化 | matplotlib 3.3.3 (中文支持) |
 | 平台 | SimpleAI 人工智能教学实训系统 |
 
+## Skill 工具集
+
+本仓库附带一个 **Claude Code Skill**（`skill/` 目录），封装了在实验服务器上跑真实实验的完整流水线：
+
+- **`scripts/srv.py`** — 韧性 SSH/SFTP 助手（带重试、断点续传、追加上传）
+- **`scripts/terminal_screenshot.py`** — 终端风格截图工具（中文支持、语法高亮）
+- **`references/connection.md`** — 三级 SSH 链路故障对策
+- **`references/experiment-recipes.md`** — 实验设计配方（怎样让结果有真实实例图）
+
+安装：`cp -r skill/ ~/.claude/skills/shixun-real-experiments/`
+
+详见 [`skill/README.md`](skill/README.md)。
+
 ## 关于本仓库
 
-本仓库仅包含**实验结果与数据**（图表、日志、JSON 结果），不包含 Python 实验脚本。
+本仓库包含**实验结果与数据**（图表、日志、JSON 结果），以及**实验自动化工具**（skill 目录下的 Python 脚本）。
 所有实验在 SimpleAI 平台远程服务器上执行，通过平台 API 和 SSH 完成实验操作与结果采集。
 
 ## License
