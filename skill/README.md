@@ -54,11 +54,57 @@ New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE\.claude\skills\shixun-re
 - "这章截图搞一下，要有实例图"
 - "把图像聚类的实验在服务器上跑一遍"
 
+## 操作流程（配合 skill）
+
+### 第一步：打开 SSH 入口
+
+**在 SimpleAI 平台上进入第01章的练习模型**，平台会分配一个无限时长的 SSH 会话。
+
+1. 浏览器打开 SimpleAI 平台，登录
+2. 进入课程 → 第01章 TensorFlow环境搭建 → 点击"进入实验"
+3. 等待 Jupyter/终端环境加载完成
+4. 从平台环境信息或项目 CLAUDE.md 获取 SSH 端口
+5. 更新 `scripts/srv.py` 顶部的 `PORT`
+
+> 其他章的练习模型也可以开 SSH，但第01章最稳定。端口在同一次练习会话内不变。
+
+### 第二步：对 Claude 说指令
+
+直接说"完成第X章实验"，Claude 会自动：
+1. 探活确认 SSH 通
+2. 在服务器上定位该章对应的数据集
+3. 上传中文字体（首次）
+4. 写好实验脚本上传到服务器
+5. nohup 后台执行 + 轮询等待
+6. tar 打包下载全部结果
+7. 整理进各实验文件夹，生成终端截图
+
+### 第三步：输出结构
+
+Skill 跑完后，每个实验文件夹的结构如下（与仓库中现有文件夹完全一致）：
+
+```
+实验文件夹/
+├── code.py                  ← 源码：服务器上真实运行的 Python 代码
+├── 01_xxx.png               ← 单独图片：每个步骤的独立图表
+├── 02_xxx.png               ←   （中文标注，编号排序）
+├── 03_xxx.png               ←
+├── terminal_code.png        ← 拼接图片：终端风格代码截图
+├── terminal_output.png      ← 拼接图片：终端风格执行输出
+├── execution.log            ← 执行日志（可选）
+└── results.json             ← 结构化结果（可选）
+```
+
+- **源码** (`code.py`)：自包含，可在服务器上独立运行
+- **单独图片** (`0X_*.png`)：每个实验概念一张图，不拼合
+- **拼接图片** (`terminal_code.png` + `terminal_output.png`)：终端主题截图，代码着色 + 输出着色
+
 ### 前置条件
 
-1. **SSH 链路必须通**。先确认 Radmin VPN 已连接、虚拟 IP 已绑定、portproxy 规则已配好。（详见 `references/connection.md`）
-2. **`srv.py` 端口要正确**。编辑 `scripts/srv.py` 顶部的 `PORT`，去项目 CLAUDE.md 的"SSH 端口历史"表查最新值。
-3. **本地 Python 3.11**：`py -3.11` 可用，装了 `paramiko`、`Pillow`。
+1. **第01章练习模型已打开**。这是 SSH 能连上的前提。
+2. **Radmin VPN 已连接**、虚拟 IP 已绑定、portproxy 规则已配好。（详见 `references/connection.md`）
+3. **`srv.py` 端口要正确**。编辑 `scripts/srv.py` 顶部的 `PORT`，去项目 CLAUDE.md 的"SSH 端口历史"表查最新值。
+4. **本地 Python 3.11**：`py -3.11` 可用，装了 `paramiko`、`Pillow`。
 
 ### 命令行直接使用脚本
 
@@ -198,14 +244,19 @@ plt.rcParams['axes.unicode_minus'] = False
 ## 标准流程速查
 
 ```
-1. 探活 → 更新端口 → srv.run(['hostname'])
+0. 打开 SSH → 第01章练习模型 → 获取端口 → 更新 srv.py
+1. 探活 → srv.run(['hostname'])
 2. 定位数据集 → find /simpleware_ro/.notebook -iname "*关键词*"
 3. 上传字体 → upload_resumable (只跑一次, md5 校验)
 4. 写实验脚本 → 本地写好, SFTP 上传
 5. 后台执行 → nohup python3 -u 脚本.py & (会超时, 正常)
 6. 轮询等待 → 另开连接 test -f /tmp/out/DONE
 7. tar 打包 → 一次性下载
-8. 整理分发 → 每个实验文件夹: PNG + execution.log + results.json + terminal.png
+8. 整理分发 → 每个实验文件夹:
+   - code.py (源码)
+   - 0X_*.png (单独图片)
+   - terminal_code.png + terminal_output.png (拼接图片)
+   - execution.log + results.json (可选)
 9. 截图验证 → 逐个 Read 检查中文/结果
 10. 更新文档 → 更新 CLAUDE.md 章节状态
 ```

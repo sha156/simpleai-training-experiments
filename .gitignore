@@ -1,6 +1,7 @@
-# Python files (not needed for results display)
+# Python files (exclude root scripts, keep experiment sources and skill)
 *.py
 !skill/**/*.py
+!**/code.py
 *.pyc
 __pycache__/
 

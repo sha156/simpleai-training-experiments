@@ -21,6 +21,7 @@
 
 ```
 ├── README.md                          ← 本文件
+├── 实训报告模板.docx                   ← 课程报告模板
 ├── crawled_data/
 │   └── 02_all_requirements.md         ← 全部 103 个实验要求汇总
 ├── skill/                             ← Claude Code Skill：真实实验流水线工具集
@@ -77,12 +78,20 @@
 
 ```
 实验文件夹/
-├── 01_*.png / 02_*.png ...    ← 实验结果图（中文标注）
-├── terminal_code.png          ← 代码截图
-├── terminal_output.png        ← 终端输出截图
-├── execution.log              ← 执行日志
-└── results.json               ← 结构化结果数据
+├── code.py                      ← 源码：服务器上真实运行的 Python 代码
+├── 01_*.png                     ← 单独图片：每个步骤的独立图表
+├── 02_*.png                     ←   （中文标注，编号排序）
+├── 03_*.png                     ←
+├── terminal_code.png            ← 拼接图片：终端风格代码截图
+├── terminal_output.png          ← 拼接图片：终端风格执行输出
+├── execution.log                ← 执行日志（可选）
+└── results.json                 ← 结构化结果数据（可选）
 ```
+
+三类输出：
+- **源码** (`code.py`)：自包含 Python 脚本，可在服务器上独立运行
+- **单独图片** (`0X_*.png`)：每个实验步骤/概念一张独立 PNG
+- **拼接图片** (`terminal_code.png` + `terminal_output.png`)：终端主题截图，代码着色 + stdout 着色
 
 ## 技术栈
 
