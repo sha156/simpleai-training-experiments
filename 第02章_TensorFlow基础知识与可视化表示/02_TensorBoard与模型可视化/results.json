@@ -1,0 +1,14 @@
+{
+  "files": [
+    "01_模型结构表.png",
+    "02_参数分布.png",
+    "03_ReLU激活函数.png",
+    "04_Sigmoid激活函数.png",
+    "05_Tanh激活函数.png",
+    "06_维度变化.png",
+    "07_各层参数.png",
+    "08_MNIST样本.png",
+    "09_激活函数对比.png"
+  ],
+  "total_params": 131274
+}

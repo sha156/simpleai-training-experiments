@@ -1,0 +1,207 @@
+        <!DOCTYPE html>
+    <html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+                <link rel="shortcut icon" href="/favicon.png" type="image/png" />
+        <link rel="icon" href="/favicon.png" type="image/png">
+                <title>人工智能教学实训系统</title>
+        <link href="/assets/deef71cb/css/bootstrap.css" rel="stylesheet">
+<link href="/css/public/default/public.css" rel="stylesheet">
+<link href="/css/public/default/color.css" rel="stylesheet">
+<link href="/spcicon/style.css" rel="stylesheet">
+<link href="/plugin/Font-Awesome-3.2.1/css/font-awesome.css" rel="stylesheet">
+<link href="/plugin/jquery.blockUI/blockUIset.css" rel="stylesheet">
+<link href="/css/public/default/button_custom.css" rel="stylesheet">
+<link href="/css/public/default/table_custom.css" rel="stylesheet">
+<link href="/plugin/bootbox/bootbox.css" rel="stylesheet">
+<link href="/plugin/icon/iconfont.css" rel="stylesheet">
+<link href="/css/_custom.css" rel="stylesheet">
+<link href="/css/student-train/mytrain_list.css" rel="stylesheet" 0="backend\assets\AppAsset">
+<link href="/css/remove-bg/remove-bg.css" rel="stylesheet" 0="backend\assets\AppAsset">
+<link href="/assets/8d6a3168/css/font-awesome.min.css" rel="stylesheet">
+<link href="/assets/ec5c39b9/css/AdminLTE.min.css" rel="stylesheet">
+<link href="/assets/ec5c39b9/css/skins/skin-custom-bdp.min.css" rel="stylesheet">
+<link href="/css/header.css" rel="stylesheet" 0="backend\assets\AppAsset">
+<script src="/assets/47b5a9b6/jquery.js"></script>        <script>
+            window.localStorage.role = 4;
+            window.localStorage.uid = 137;
+            if(window.localStorage.role == 5){
+                window.localStorage.parent = 137;
+            }else{
+                window.localStorage.removeItem('parent');
+            }
+        </script>
+    </head>
+    <body class="hold-transition skin-custom-bdp sidebar-mini">
+        <div class="wrapper">
+        <style>
+    .user-menus{background:none;border:none; }
+    .user-menus li a{height: 45px;color: #fff;line-height: 35px;}
+    .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus{color: #fff;background-color:#8955b5;}
+    .menu .menu-view>li>a {  display: block;font-size: 16px;}
+    .logo-lg{
+        width:32px;
+        height: 32px;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        display: inline-block;
+    }
+    .main-header .logo{
+        display: flex;
+        align-items: center;
+        padding-left: 20px;
+    }
+    .main-header .logo .entry_name{
+        flex: 1;
+        color:#4A1C6E;
+        font-size: 22px;
+        font-weight: 400;
+    }
+    .main-header .navbar-custom-menu .navbar-nav .user-menu .dropdown-toggle .user-image{
+        filter:none;
+        width:28px;
+        height:28px;
+    }
+</style>
+<header class="main-header">
+<!--    <div class="title">-->
+<!--        <h1>大数据教学实训系统BDP</h1>-->
+<!--    </div>     <span class="logo-mini">
+        <img class="login-img" src="'.$siteConfig["inner_logo"].'" alt="">
+    </span>                               <img class="login-img" src="'.$siteConfig["inner_logo"].'" alt="">        -->
+    <div style="width:1400px;margin:0 auto;">
+                <a class="logo" href="/">
+        <span class="logo-lg" style="background-image:url(/logo-head.png);"></span>
+        <span class="entry_name">人工智能教学实训系统</span></a>
+        <nav class="navbar navbar-static-top" role="navigation">
+
+
+
+<!--        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">-->
+<!--            <span class="sr-only">收缩导航</span>-->
+<!--        </a>-->
+
+        <div class="navbar-custom-menu">
+            
+            <ul class="nav navbar-nav">
+                <!--教师端独有-->
+                                <!--教师端独有-->
+                <li class="dropdown user user-menu">
+
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                    <img src="/images/student_p.png" class="user-image" alt="User Image"/>
+                                                <span class="hidden-xs">蔡安迪</span>
+                    </a>
+                    <ul class="dropdown-menu user-menus" style="width: 50px">
+                        <!-- Menu Footer-->
+                        <li>
+                            <a class="btn btn-primary btn-flat" href="/site/resetpassword">个人信息</a>                        </li>
+                        <li>
+                            <a class="btn btn-primary btn-flat" href="/site/logout" data-method="post">退出登录</a>                        </li>
+                    </ul>
+                </li>
+
+
+            </ul>
+        </div>
+    </nav>            
+    </div>
+</header>
+
+        <script type='text/javascript'>
+    $(document).ready(function(){
+        $('.blank').find('a').attr('target','_blank');
+    });
+</script>
+    <aside class="main-sidebar student-sidebar" style="background: url(/images/student.jpg) left center;">
+    <section class="sidebar" style="height: auto;">
+    <ul class="menu"><li class="menu-first-li menu-statistics"><a href="/student-course/my-experience"> 统计</a></li>
+<li class="menu-first-li menu-course"><a href="/student-course/index"> 课程</a></li>
+<li class="menu-first-li menu-train active"><a href="/student-train/index"> 实训</a></li>
+<li class="menu-first-li menu-exam"><a href="/exams/student-examination/index"> 考试</a></li>
+<li class="menu-first-li menu-result"><a href="/student-course/my-score"> 成绩</a></li>
+<li class="menu-first-li menu-forum"><a href="/forum/index"> 论坛</a></li></ul>    </section>
+</aside>
+
+        <div class="content-wrapper">
+    <section class="content-header row" id="breadcrumbList">
+        
+        <ul class="breadcrumb"><li><a href="/">首页</a></li>
+<li class="active">我的实训</li>
+</ul>    </section>
+
+    <section class="content">
+        <div class="row">
+            
+<style>
+    .student-course-list>.student-course-list-container>.nav-tabs {
+        border-bottom: 1px solid #D0D0D0;
+        position: absolute;
+        width: 100%;
+        top: -60px;
+        left: 0px;
+    }
+    .student-course-list>.student-course-list-container.nav-tabs-custom>.nav-tabs>li.active{
+        border: none !important;
+    }
+    .student-course-list>.student-course-list-container.nav-tabs-custom>.nav-tabs>li.active a{
+        background: #8955b5;
+        color: #ffffff;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        border-left-color: transparent;
+        border-top-color: transparent;
+    }
+</style>
+<div class="student-course-list panel-content box">
+    <div class="student-course-list-container nav-tabs-custom" style="padding: 10px;">
+        <ul class="nav nav-tabs">
+            <li class="course-tab last_study active"><a href="#tab_1" data-toggle="tab">最近实训</a></li>
+            <li class="course-tab my_course"><a href="#tab_2" data-toggle="tab">我的实训</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab_1">
+
+            </div>
+            <div class="tab-pane" id="tab_2">
+
+            </div>
+        </div>
+    </div>
+</div>        </div>
+    </section>
+</div>
+
+<footer class="main-footer">
+    <p class="text-center" style="margin:0;">
+            </p>
+</footer>
+
+<div class='control-sidebar-bg'></div>
+<style>
+.content-wrapper #breadcrumbList li{
+    color: white;
+}
+.content-wrapper #breadcrumbList li a{
+    color: white;
+}
+</style>
+
+    </div>
+    <script src="/assets/8117a2e2/yii.js"></script>
+<script src="/plugin/polyfill.js"></script>
+<script src="/js/public/public.js"></script>
+<script src="/plugin/bootbox/confirm.js"></script>
+<script src="/plugin/myplugin.js"></script>
+<script src="/plugin/jquery.blockUI/jquery.blockUI.js"></script>
+<script src="/plugin/jquery.blockUI/blockUIset.js"></script>
+<script src="/plugin/bootbox/bootbox.min.js"></script>
+<script src="/plugin/video/zh-CN.js"></script>
+<script src="/plugin/jquery.nicescroll-3.7.6/jquery.nicescroll.js"></script>
+<script src="/js/stu-train/mytrain_list.js" 0="backend\assets\AppAsset"></script>
+<script src="/js/stu-train/train_detail.js" 0="backend\assets\AppAsset"></script>
+<script src="/assets/deef71cb/js/bootstrap.js"></script>
+<script src="/assets/ec5c39b9/js/app.min.js"></script>    </body>
+    </html>
+    

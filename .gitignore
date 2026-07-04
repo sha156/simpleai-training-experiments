@@ -1,0 +1,18 @@
+# Python files (not needed for results display)
+*.py
+*.pyc
+__pycache__/
+
+# Excluded files
+crawled_data/REPORT_MATERIAL.md
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Git
+.git/
